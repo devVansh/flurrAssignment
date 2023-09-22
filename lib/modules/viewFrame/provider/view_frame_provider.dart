@@ -82,7 +82,7 @@ class ViewFrameProvider with ChangeNotifier {
   //get frames from SharedPrefrences
 
   void getPostsData(BuildContext context) {
-    List<dynamic> responseList = BaseSharedPreference.instance.getSavedImage()!;
+    List<dynamic> responseList = BaseSharedPreference.instance.getSavedImage() ?? [];
 
     List<Widget> listItems = [];
     responseList.forEach((post) {
