@@ -8,12 +8,14 @@ import '../../utils/app_sizes.dart';
 import '../../utils/constants.dart';
 import '../viewFrame/provider/view_frame_provider.dart';
 
-class MyHomePage extends StatefulWidget {
+class FurrlDashboard extends StatefulWidget {
+  const FurrlDashboard({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<FurrlDashboard> createState() => _FurrlPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FurrlPageState extends State<FurrlDashboard> {
   ScrollController controller = ScrollController();
   bool closeTopContainer = false;
   double topContainer = 0;
@@ -32,10 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
-  void didChangeDependencies() {
-
-  }
 
   @override
   Widget build(BuildContext context) {

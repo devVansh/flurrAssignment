@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         home: ViewFrame(),
         builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
-        title: 'Flurr Assignment',
+        title: 'Furrl Assignment',
       ),
     );
   }

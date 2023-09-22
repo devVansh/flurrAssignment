@@ -1,13 +1,13 @@
 
-import 'package:flurr_assignment/modules/homePage/home_page.dart';
+
 import 'package:flurr_assignment/modules/viewFrame/provider/view_frame_provider.dart';
 import 'package:flurr_assignment/utils/shared_prefrences.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 import 'package:provider/provider.dart';
 
 
-import '../../../main.dart';
+
 import '../../../utils/app_sizes.dart';
 import '../../../utils/constants.dart';
 

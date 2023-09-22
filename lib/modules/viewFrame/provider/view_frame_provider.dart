@@ -21,25 +21,11 @@ class ViewFrameProvider with ChangeNotifier {
   List<Widget> itemsData = [];
   List<Widget> storiesItem = [];
 
-  Future getImageSize(Image image) {
-    Completer completer = Completer();
-    image.image.resolve(const ImageConfiguration()).addListener(
-      ImageStreamListener(
-        (ImageInfo image, bool synchronousCall) {
-          var myImage = image.image;
-          Size size = Size(myImage.width.toDouble(), myImage.height.toDouble());
-          completer.complete(size);
-        },
-      ),
-    );
-    return completer.future;
-  }
 
 // here we will split the image into small pieces using the rows and columns defined above; each piece will be added to a stack
   Future<void> addImagesToView(List<XFile> image, int height) async {
     pieces.clear();
     image.asMap().forEach((i, element) async {
-      Size imageSize = await getImageSize(Image.file(File(element.path)));
       pieces.add(PieceView(
         key: GlobalKey(),
         image: Image.file(File(element.path)),
@@ -53,7 +39,7 @@ class ViewFrameProvider with ChangeNotifier {
     final List<XFile> pickedFileList = await ImagePicker().pickMultiImage();
     addImagesToView(pickedFileList, 2).then((value) {
       mainNavigatorKey.currentState?.push(MaterialPageRoute(
-        builder: (context) => EditFrame(),
+        builder: (context) => const EditFrame(),
       ));
     });
   }
@@ -98,7 +84,7 @@ class ViewFrameProvider with ChangeNotifier {
         height: AppSizes.getHeight(context, percent: 50),
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
             color: Colors.white,
             boxShadow: [
               BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
@@ -217,7 +203,7 @@ class ViewFrameProvider with ChangeNotifier {
     notifyListeners();
 
     mainNavigatorKey.currentState?.push(MaterialPageRoute(
-      builder: (context) => MyHomePage(),
+      builder: (context) => const FurrlDashboard(),
     ));
   }
 }
