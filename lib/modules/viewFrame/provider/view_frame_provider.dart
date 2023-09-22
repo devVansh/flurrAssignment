@@ -13,6 +13,7 @@ import '../../../main.dart';
 import '../../../utils/app_sizes.dart';
 import '../../../utils/constants.dart';
 import '../../editFrame/ui/edit_frame.dart';
+import '../../homePage/home_page.dart';
 
 class ViewFrameProvider with ChangeNotifier {
   List<Widget> pieces = [];
@@ -172,8 +173,8 @@ class ViewFrameProvider with ChangeNotifier {
                           children: [
                             const CircleAvatar(
                               radius: AppSizes.defaultPadding,
-                              backgroundImage: NetworkImage(
-                                  "https://images.unsplash.com/photo-1578253809350-d493c964357f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"),
+                              backgroundImage: AssetImage(
+                                  "assets/images/profile.png"),
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -212,9 +213,11 @@ class ViewFrameProvider with ChangeNotifier {
         ),
       ));
     });
-    //setState(() {
     itemsData = listItems;
     notifyListeners();
-    //});
+
+    mainNavigatorKey.currentState?.push(MaterialPageRoute(
+      builder: (context) => MyHomePage(),
+    ));
   }
 }

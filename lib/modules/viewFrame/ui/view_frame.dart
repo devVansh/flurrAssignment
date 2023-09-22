@@ -54,7 +54,7 @@ class ViewFrame extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        topView(),
+                        topView(context),
                         hashtagView(),
                         bottomView(context, viewFrameProvider)
                       ],
@@ -67,7 +67,7 @@ class ViewFrame extends StatelessWidget {
     );
   }
 
-  topView() => Container(
+  topView(BuildContext context) => Container(
         color: Colors.white,
         padding: const EdgeInsets.all(AppSizes.smallPadding),
         child: Row(
@@ -79,8 +79,8 @@ class ViewFrame extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   radius: AppSizes.buttonSize,
-                  backgroundImage: NetworkImage(
-                      "https://i.pinimg.com/originals/7d/34/d9/7d34d9d53640af5cfd2614c57dfa7f13.png"),
+                  backgroundImage: AssetImage(
+                      "assets/images/profile.png"),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -96,9 +96,10 @@ class ViewFrame extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: AppSizes.smallPadding),
               child: GestureDetector(
                 onTap: () {
-                    mainNavigatorKey.currentState?.push(MaterialPageRoute(
-                      builder: (context) => MyHomePage(),
-                    ));
+
+                  Provider.of<ViewFrameProvider>(context, listen: false)
+                      .getPostsData(context);
+
 
                 },
                 child: Text(Constants.dashboard,

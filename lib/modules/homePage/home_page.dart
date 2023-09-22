@@ -34,14 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void didChangeDependencies() {
-    Provider.of<ViewFrameProvider>(context, listen: false)
-        .getPostsData(context);
+
   }
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final double categoryHeight = size.height * 0.30;
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
